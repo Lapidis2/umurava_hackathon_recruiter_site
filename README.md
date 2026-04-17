@@ -11,8 +11,6 @@
   <img src="https://img.shields.io/badge/Hackathon-Umurava_AI-orange?style=for-the-badge" />
 </p>
 
----
-
 ##  Problem
 
 Recruiters today face:
@@ -20,9 +18,6 @@ Recruiters today face:
 - Overwhelming number of applications  
 -  Difficulty comparing candidates fairly  
 -  Long time-to-hire  
-
----
-
 ##  Solution
 
 This frontend delivers a **clean, intelligent interface** that enables recruiters to:
@@ -33,14 +28,9 @@ This frontend delivers a **clean, intelligent interface** that enables recruiter
 - Understand *why* each candidate is selected  
 
 >  AI assists decision-making — humans remain in control.
-
----
-
 ##  Live Demo
 
  https://ai-talent-screening.vercel.app  
-
----
 
 ##  Core Features
 
@@ -73,25 +63,18 @@ Each candidate includes:
 - Gaps / Risks  
 - Final Recommendation  
 
----
-
 ##  User Flow
 ### Create Job → Upload Applicants → Trigger AI → View Ranked Candidates
 
+##  UI Preview
 
----
-
-## 🖥️ UI Preview
-
-> 🚨 Add screenshots here (this is critical for recruiter impact)
+> Add screenshots here (this is critical for recruiter impact)
 
 Recommended:
 - Dashboard view  
 - Candidate ranking table  
 - AI explanation cards  
 - Upload interface  
-
----
 
 ##  Tech Stack
 
@@ -103,7 +86,7 @@ Recommended:
 | Styling      | Tailwind CSS |
 | API Layer    | REST APIs |
 
----
+
 
 ##  Project Structure
 
@@ -118,8 +101,6 @@ src/
 └── styles/ Global styles
 ```
 
----
-
 ##  Getting Started
 
 ### 1. Clone repository
@@ -128,7 +109,7 @@ src/
 git clone https://github.com/Lapidis2/umurava_hackaton_recruiter_site.git
 cd umurava_hackaton_recruiter_site
 ```
----
+
 ### 2. Install dependencies
 
 ```
