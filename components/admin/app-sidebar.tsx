@@ -20,25 +20,14 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
-import Image from "next/image";
+import Logout from "../common/Logout";
 
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 group-data-[collapsible=icon]:justify-center">
-          {/* Logo Icon */}
-          {/* <div className="flex items-center justify-center">
-            <Image
-              src="/logo-icon.png"
-              alt="RecruitAI logo"
-              width={100}
-              height={100}
-              className="shrink-0"
-            />
-          </div> */}
-                  <SidebarTrigger  />
-
+          <SidebarTrigger />
           {/* Text (hidden when collapsed) */}
           <span className="text-lg font-semibold group-data-[collapsible=icon]:hidden">
             RecruitAI
@@ -135,10 +124,10 @@ export function AppSidebar() {
             <SidebarMenuButton
               className="flex gap-3 text-xl text-red-800/80 hover:text-red-600"
               render={
-                <a href="/settings">
+                <div aria-label="Logout-Button">
                   <LogOut />
-                  <span>Logout</span>
-                </a>
+                  <Logout /> {/* Logout component*/}
+                </div>
               }
             />
           </SidebarMenuItem>
