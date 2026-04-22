@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { authClient } from "@/lib/auth-client";
+import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/card";
 import { Loader2, LockKeyhole } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import SocialMediaAuth from "./SocialMediaAuth";
 
 function LoginFormUI() {
+  const { actions } = useAuth(); // Using actions from context
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,8 @@ function LoginFormUI() {
     e.preventDefault();
     setLoading(true);
 
-    await authClient.signIn.email(
+    // Using actions.login from context instead of direct authClient call
+    await actions.login(
       {
         email,
         password,
@@ -42,7 +43,6 @@ function LoginFormUI() {
       },
     );
   };
-
 
   return (
     <form
@@ -70,6 +70,7 @@ function LoginFormUI() {
               Email
             </label>
             <Input
+              id="email"
               type="email"
               placeholder="name@example.com"
               className="h-11 bg-transparent border-gray-300 placeholder-gray-500/50 focus-visible:ring-blue-500"
@@ -78,10 +79,11 @@ function LoginFormUI() {
             />
           </div>
           <div className="grid gap-2">
-            <label htmlFor="Name" className="form-label text-xl font-normal">
+            <label htmlFor="password" className="form-label text-xl font-normal">
               Password
             </label>
             <Input
+              id="password"
               type="password"
               placeholder="Create a password"
               className="h-11 bg-transparent border-gray-300 placeholder-gray-500/50 focus-visible:ring-blue-500"

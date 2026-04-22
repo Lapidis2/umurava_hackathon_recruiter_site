@@ -1,5 +1,11 @@
-import { createAuthClient } from "better-auth/react"
+import { adminClient } from "better-auth/client/plugins";
+import { createAuthClient } from "better-auth/react";
 
-export const authClient = createAuthClient({
-    baseURL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL // e.g. http://localhost:3000
-})
+const authConfig = {
+  baseURL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL || "http://localhost:3000",
+  plugins: [adminClient()],
+};
+
+export const authClient = createAuthClient(authConfig) as ReturnType<
+  typeof createAuthClient<typeof authConfig>
+>;

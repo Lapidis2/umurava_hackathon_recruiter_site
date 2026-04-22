@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
-import { authClient } from "@/lib/auth-client";
+import { useAuth } from "@/context/AuthContext"; // Integrated Auth Context
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,11 +19,9 @@ import {
 import Link from "next/link";
 import SocialMediaAuth from "./SocialMediaAuth";
 
-
 function RegisterForm() {
-
-
-   const [email, setEmail] = useState("");
+    const { actions } = useAuth(); // Destructure actions from context
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [loading, setLoading] = useState(false);
@@ -32,7 +30,8 @@ function RegisterForm() {
       e.preventDefault();
       setLoading(true);
       
-      await authClient.signUp.email({
+      // Using actions.signUp from context
+      await actions.signUp({
         email,
         password,
         name,
@@ -45,10 +44,10 @@ function RegisterForm() {
         },
         onSuccess: () => {
           setLoading(false);
-          // Better-Auth handles the redirect to callbackURL automatically
         },
       });
     };
+
   return (
     <form onSubmit={handleSignUp} className="w-full max-w-md animate-in fade-in zoom-in duration-500">
         <Card className="border-border/50 bg-background/60 backdrop-blur-xl shadow-2xl">
@@ -70,6 +69,7 @@ function RegisterForm() {
             <div className="grid gap-2">
               <label htmlFor="name" className="form-label text-xl font-normal">Name</label>
               <Input 
+                id="name"
                 placeholder="Full Name" 
                 className="h-11 bg-transparent border-gray-300 placeholder-gray-500/50 focus-visible:ring-blue-500"
                 onChange={(e) => setName(e.target.value)} 
@@ -79,6 +79,7 @@ function RegisterForm() {
             <div className="grid gap-2">
               <label htmlFor="email" className="form-label text-xl font-normal">Email</label>
               <Input 
+                id="email"
                 type="email"
                 placeholder="name@example.com" 
                 className="h-11 bg-transparent border-gray-300 placeholder-gray-500/50 focus-visible:ring-blue-500"
@@ -89,6 +90,7 @@ function RegisterForm() {
             <div className="grid gap-2">
               <label htmlFor="password" className="form-label text-xl font-normal">Password</label>
               <Input 
+                id="password"
                 type="password" 
                 placeholder="Create a password" 
                 className="h-11 bg-transparent border-gray-300 placeholder-gray-500/50 focus-visible:ring-blue-500"
